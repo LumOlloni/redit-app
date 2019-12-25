@@ -16,8 +16,8 @@ class Home extends Component {
       "https://cors-anywhere.herokuapp.com/https://www.reddit.com/r/random.json"
     );
 
-    this.setState({ posts: result.data, loading: false });
-    console.log(result.data);
+    this.setState({ posts: result.data.data.children, loading: false });
+    // console.log(result.data.data.children);
   }
 
   render() {
@@ -25,7 +25,7 @@ class Home extends Component {
     return (
       <div>
         <div className='container'>
-          <Post loading={this.state.loading} posts={this.state.posts} />
+          <Post posts={this.state.posts} loading={this.state.loading} />
         </div>
       </div>
     );

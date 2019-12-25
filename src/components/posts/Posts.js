@@ -1,11 +1,14 @@
 import React, { Component } from "react";
+import PostItem from "./PostItem";
+import uuid from "uuid";
 
 class Posts extends Component {
   render() {
+    const object = Array.from(this.props.posts);
     return (
       <div style={postStyle}>
-        {this.props.posts.map(post => (
-          <div>{post.author}</div>
+        {object.map(post => (
+          <PostItem key={uuid.v4()} post={post} />
         ))}
       </div>
     );
