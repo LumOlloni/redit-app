@@ -9,11 +9,7 @@ const Footer = () => {
         className='page-footer font-small blue fixed-bottom'
       >
         <div className='footer-copyright text-center py-2'>
-          <div className='textColor'>
-            {" "}
-            © 2019 Copyright:
-            <a>Lum Olloni</a>
-          </div>
+          <div className='textColor'> © 2019 Copyright: Lum Olloni</div>
         </div>
       </footer>
     </Fragment>

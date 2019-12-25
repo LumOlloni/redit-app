@@ -2,7 +2,13 @@ import React, { Component } from "react";
 
 class Posts extends Component {
   render() {
-    return <div style={postStyle}></div>;
+    return (
+      <div style={postStyle}>
+        {this.props.posts.map(post => (
+          <div>{post.author}</div>
+        ))}
+      </div>
+    );
   }
 }
 

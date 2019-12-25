@@ -13,10 +13,10 @@ const Navbar = ({ icon, title }) => {
       >
         <span className='navbar-toggler-icon'></span>
       </button>
-      <a className='navbar-brand '>
-        <i style={{ color: "#FF4301" }} className={icon}></i>
+      <div className='navbar-brand '>
+        <i style={style} className={icon}></i>
         {title}
-      </a>
+      </div>
       <div className='collapse navbar-collapse' id='navbarCollapse'>
         <ul className='navbar-nav mr-auto'>
           <li className='nav-item active'>
@@ -33,6 +33,10 @@ const Navbar = ({ icon, title }) => {
       </div>
     </nav>
   );
+};
+
+const style = {
+  color: "#FF4301"
 };
 
 Navbar.propTypes = {
