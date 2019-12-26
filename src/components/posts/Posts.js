@@ -1,10 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import PostItem from "./PostItem";
 import uuid from "uuid";
+import Spinner from "../layout/Spinner";
 
-class Posts extends Component {
-  render() {
-    const object = Array.from(this.props.posts);
+const Posts = ({ posts, loading }) => {
+  if (loading) {
+    return <Spinner />;
+  } else {
+    const object = Array.from(posts);
     return (
       <div style={postStyle}>
         {object.map(post => (
@@ -13,7 +16,7 @@ class Posts extends Component {
       </div>
     );
   }
-}
+};
 
 const postStyle = {
   display: "grid",

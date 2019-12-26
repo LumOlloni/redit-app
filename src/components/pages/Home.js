@@ -17,11 +17,9 @@ class Home extends Component {
     );
 
     this.setState({ posts: result.data.data.children, loading: false });
-    // console.log(result.data.data.children);
   }
 
   render() {
-    // const { loading, posts } = this.state;
     return (
       <div>
         <div className='container'>

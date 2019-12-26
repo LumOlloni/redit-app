@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import NoImage from "../layout/NoImage";
 
 class PostItem extends Component {
   render() {
     const { data } = this.props.post;
-    const { selftext, author_fullname, title, thumbnail, preview } = data;
-
-    console.log(preview);
+    const { selftext, author_fullname, title, thumbnail } = data;
+    const noPicture =
+      "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg";
 
     const truncate = (string, no_word) => {
       return string
@@ -14,15 +13,16 @@ class PostItem extends Component {
         .splice(0, no_word)
         .join(" ");
     };
+
     return (
-      // <div className='container'>
       <div className='row'>
         <div className='col-md-4 mt-2'>
           <div style={{ width: "18rem" }} className='card'>
             <div className='card-block'>
               <img
                 className='card-img-top img-fluid'
-                src={thumbnail.length > 0 ? thumbnail : <NoImage />}
+                // src={thumbnail}
+                src={thumbnail.length > 0 ? thumbnail : noPicture}
               />
               <h4 className='card-title'>
                 {title.length > 0 ? title : "No Tittle "}
@@ -35,7 +35,6 @@ class PostItem extends Component {
           </div>
         </div>
       </div>
-      // </div>
     );
   }
 }
