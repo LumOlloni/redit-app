@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div id='page-content'>
         <Router>
-          <NavBar icon='fab fa-reddit f1a1' title='SubbReddit' />
+          <NavBar icon='fab fa-reddit f1a1' title='React SubbReddit' />
           <Switch>
             <Route exact path='/' component={Home}></Route>
             <Route exact path='/about' component={About}></Route>

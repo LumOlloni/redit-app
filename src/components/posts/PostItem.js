@@ -22,8 +22,6 @@ class PostItem extends Component {
         : reditDefaultPicture
       : reditDefaultPicture;
 
-    console.log(image);
-
     const truncate = (string, no_word) => {
       return string
         .split(" ")
@@ -43,9 +41,7 @@ class PostItem extends Component {
             {title.length > 0 ? title : "No Tittle "}
           </h4>
           <p className='card-text'>{truncate(selftext, 12)}</p>
-          <p className='card-text'>
-            Author: <legend>{author_fullname}</legend>
-          </p>
+          <p className='card-text'>Author: {author_fullname}</p>
           <p className='badge badge-primary'>Awards:{total_awards_received}</p>
           <p className='badge badge-warning'>Score:{score}</p>
         </div>
