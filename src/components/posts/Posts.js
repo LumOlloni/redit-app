@@ -9,7 +9,7 @@ const Posts = ({ posts, loading }) => {
   } else {
     const object = Array.from(posts);
     return (
-      <div style={postStyle}>
+      <div className='card-columns mt-2'>
         {object.map(post => (
           <PostItem key={uuid.v4()} post={post} />
         ))}
@@ -18,10 +18,9 @@ const Posts = ({ posts, loading }) => {
   }
 };
 
-const postStyle = {
-  display: "grid",
-  gridTemplateColumns: "repeat(3,1fr)",
-  gridGap: "1rem"
-};
+// const postStyle = {
+//   display: "grid",
+//   gridTemplateColumns: "repeat(3,1fr)"
+// };
 
 export default Posts;

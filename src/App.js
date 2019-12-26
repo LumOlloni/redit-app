@@ -6,6 +6,7 @@ import Home from "./components/pages/Home";
 import Footer from "./components/layout/Footer";
 import About from "./components/pages/About";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import Search from "./components/posts/Search";
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Home}></Route>
             <Route exact path='/about' component={About}></Route>
+            <Route exact path='/search' component={Search}></Route>
           </Switch>
         </Router>
         <Footer />

@@ -13,7 +13,7 @@ class Home extends Component {
     this.setState({ loading: true });
 
     const result = await axios.get(
-      "https://cors-anywhere.herokuapp.com/https://www.reddit.com/r/random.json"
+      "https://cors-anywhere.herokuapp.com/https://www.reddit.com/r/random.json?limit=2"
     );
 
     this.setState({ posts: result.data.data.children, loading: false });

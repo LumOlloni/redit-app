@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const Navbar = ({ icon, title }) => {
   return (
-    <nav className='navbar navbar-expand-lg bg-light navbar-light'>
+    <nav className='navbar navbar-expand-lg bg-light navbar-light mb-3'>
       <button
         type='button'
         className='navbar-toggler'
@@ -22,6 +22,11 @@ const Navbar = ({ icon, title }) => {
           <li className='nav-item active'>
             <Link className='nav-link mt-2' to='/'>
               Home
+            </Link>
+          </li>
+          <li className='nav-item active'>
+            <Link className='nav-link mt-2' to='/search'>
+              Search Reddit
             </Link>
           </li>
           <li className='nav-item active'>
