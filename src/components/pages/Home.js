@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Post from "../posts/Posts";
 import axios from "axios";
 import Pagination from "../posts/Pagination";
+import Search from "../posts/Search";
 
 class Home extends Component {
   state = {
