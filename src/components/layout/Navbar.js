@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const Navbar = ({ icon, title }) => {
   return (
-    <nav className='navbar navbar-expand-lg bg-light navbar-light mb-3'>
+    <nav className='navbar navbar-expand-lg bg-light navbar-light mb-3 '>
       <button
         type='button'
         className='navbar-toggler'

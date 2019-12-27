@@ -2,8 +2,8 @@ import React from "react";
 
 const Search = () => {
   return (
-    <div className='container'>
-      <div className='card card-body bg-light mb-2'>
+    <div className='container mt-3'>
+      <div className='card card-body bg-light mb-2 '>
         <h4>Search Reddit</h4>
         <form>
           <div className='form-group'>
