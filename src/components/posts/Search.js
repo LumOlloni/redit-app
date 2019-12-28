@@ -1,20 +1,39 @@
 import React, { useState } from "react";
+import SearchPost from "./SearchPost";
 
-const Search = ({ searchUsers }) => {
+import axios from "axios";
+
+const Search = () => {
   const [text, setText] = useState("");
-  const [radioInput, setRadioInput] = useState("");
-  const [limit, setLimit] = useState("");
+  const [radioInput, setRadioInput] = useState("Relevance");
+  const [limit, setLimit] = useState("5");
+  const [post, setPost] = useState([]);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const onChange = e => {
     setText(e.target.value);
   };
 
+  const searchPost = async (radioInput, text, limit) => {
+    setLoading(true);
+
+    const res = await axios.get(
+      `http://www.reddit.com/search.json?q=${text}&sort=${radioInput}&limit=${limit}`
+    );
+
+    setPost({ post: res.data });
+    setLoading(false);
+  };
+
   const onSubmit = e => {
     e.preventDefault();
-    searchUsers(radioInput, text, limit);
-    setRadioInput("");
+
+    searchPost(radioInput, text, limit);
+    setIsSubmitted(true);
     setText("");
-    setLimit("");
+
+    console.log(post);
   };
 
   return (
@@ -40,10 +59,10 @@ const Search = ({ searchUsers }) => {
                 type='radio'
                 name='radio'
                 value='Relevance'
-                onChange={e => setRadioInput(e.target.value)}
+                onClick={e => setRadioInput(e.target.value)}
                 defaultChecked
               />
-              Relevance
+              Rerlevance
             </label>
           </div>
           <div className='form-check form-check-inline'>
@@ -68,7 +87,6 @@ const Search = ({ searchUsers }) => {
               <option value='10'>10</option>
               <option value='25'>25</option>
               <option value='50'>50</option>
-              <option value='100'>100</option>
             </select>
           </div>
           <button
@@ -79,6 +97,7 @@ const Search = ({ searchUsers }) => {
           </button>
         </form>
       </div>
+      {isSubmitted && <SearchPost posts={post} loading={loading} />}
     </div>
   );
 };

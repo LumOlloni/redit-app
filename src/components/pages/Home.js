@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Post from "../posts/Posts";
 import axios from "axios";
 import Pagination from "../posts/Pagination";
-import Search from "../posts/Search";
 
 class Home extends Component {
   state = {
@@ -13,7 +12,6 @@ class Home extends Component {
   };
 
   // Get Current posts
-
   async componentDidMount() {
     this.setState({ loading: true });
 
@@ -39,6 +37,7 @@ class Home extends Component {
       <div>
         <div className='container'>
           <Post posts={currentPost} loading={this.state.loading} />
+
           <Pagination
             postPerPage={this.state.postPerPage}
             totalPosts={postsArray.length}
