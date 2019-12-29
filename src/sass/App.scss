@@ -27,7 +27,7 @@
 
 
 #page-content {
-  min-height: 115vh;
+  min-height: 110vh;
   position: relative;
   margin: 0;
 }
@@ -38,4 +38,10 @@
 
   height: 35px;
   width: 100%;
+}
+
+@media (min-width:0px) and (max-width:650px) {
+  .pagination {
+    padding-bottom: 60px;
+  }
 }
