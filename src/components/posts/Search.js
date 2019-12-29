@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import SearchPost from "./SearchPost";
-
 import axios from "axios";
 
-const Search = () => {
+const Search = ({ showAlert }) => {
   const [text, setText] = useState("");
   const [radioInput, setRadioInput] = useState("Relevance");
   const [limit, setLimit] = useState("5");
@@ -28,12 +27,22 @@ const Search = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-
-    searchPost(radioInput, text, limit);
     setIsSubmitted(true);
-    setText("");
+    // eslint-disable-next-line
+    if (text.length == "") {
+      console.log("Lum Olloni");
+      showAlert("No Result Found", "warning");
+      setIsSubmitted(false);
+    } else {
+      searchPost(radioInput, text, limit);
+    }
+  };
 
-    console.log(post);
+  const clearPost = e => {
+    e.preventDefault();
+    setPost([]);
+    setIsSubmitted(false);
+    setText("");
   };
 
   return (
@@ -97,7 +106,20 @@ const Search = () => {
           </button>
         </form>
       </div>
-      {isSubmitted && <SearchPost posts={post} loading={loading} />}
+      {isSubmitted &&
+        // eslint-disable-next-line
+        (text.length == "" ? (
+          <div className='alert alert-warning' role='alert'>
+            No result Found
+          </div>
+        ) : (
+          <div>
+            <button onClick={clearPost} className='btn btn-block btn-light'>
+              Clear
+            </button>
+            <SearchPost posts={post} loading={loading} />
+          </div>
+        ))}
     </div>
   );
 };
