@@ -48,6 +48,7 @@ const PostItem = ({ post }) => {
       </div>
       <div className='col text-center'>
         <a
+          rel='noopener noreferrer'
           style={{ color: "white" }}
           target='_blank'
           href={url}

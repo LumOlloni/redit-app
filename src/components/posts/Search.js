@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import SearchPost from "./SearchPost";
 import RedditContext from "../../context/reddit/redditContext";
+import Alert from "../layout/Alert";
 
 const Search = () => {
   const redditContext = useContext(RedditContext);
@@ -27,6 +28,7 @@ const Search = () => {
 
   return (
     <div className='container mt-3'>
+      <Alert />
       <div className='card card-body bg-light mb-2 '>
         <h4>Search Reddit</h4>
         <form onSubmit={onSubmit}>

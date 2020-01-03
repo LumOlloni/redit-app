@@ -1,11 +1,9 @@
 import {
   SEARCH_POSTS,
-  GET_POSTS,
   SHOW_ALERT,
   CREAR_POSTS,
   SET_TRUE,
   SET_LOADING,
-  SET_ALERT,
   CLEAR_TEXT,
   REMOVE_ALERT
 } from "../types";

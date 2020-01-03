@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext } from "react";
+import React from "react";
 import "./sass/App.scss";
 import "./sass/Navbar.scss";
 import NavBar from "./components/layout/Navbar";
@@ -7,8 +7,8 @@ import Footer from "./components/layout/Footer";
 import About from "./components/pages/About";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import Search from "./components/posts/Search";
-import Alert from "./components/layout/Alert";
 import RedditState from "./context/reddit/RedditState";
+import NotFound from "./components/pages/NotFound";
 
 const App = () => {
   return (
@@ -19,17 +19,8 @@ const App = () => {
           <Switch>
             <Route exact path='/' component={Home}></Route>
             <Route exact path='/about' component={About}></Route>
-            <Route
-              exact
-              path='/search'
-              // component={Search}
-              render={props => (
-                <Fragment>
-                  <Alert />
-                  <Search />
-                </Fragment>
-              )}
-            ></Route>
+            <Route exact path='/search' component={Search}></Route>
+            <Route component={NotFound} />
           </Switch>
         </Router>
         <Footer />

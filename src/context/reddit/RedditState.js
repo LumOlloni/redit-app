@@ -1,16 +1,13 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer } from "react";
 import axios from "axios";
 import RedditContext from "./redditContext";
 import RedditReducer from "./RedditReducer";
 import {
   SEARCH_POSTS,
-  GET_POSTS,
   CREAR_POSTS,
   SET_LOADING,
-  SET_ALERT,
   SET_TRUE,
   SHOW_ALERT,
-  CLEAR_TEXT,
   REMOVE_ALERT
 } from "../types";
 
