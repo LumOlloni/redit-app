@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useContext } from "react";
 import "./sass/App.scss";
 import "./sass/Navbar.scss";
 import NavBar from "./components/layout/Navbar";
@@ -8,36 +8,32 @@ import About from "./components/pages/About";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import Search from "./components/posts/Search";
 import Alert from "./components/layout/Alert";
+import RedditState from "./context/reddit/RedditState";
 
 const App = () => {
-  const [alert, setAlert] = useState(null);
-
-  const showAlert = (msg, type) => {
-    setAlert({ msg, type });
-    setTimeout(() => setAlert(null), 3000);
-  };
-
   return (
     <div id='page-content'>
-      <Router>
-        <NavBar icon='fab fa-reddit f1a1' title='React Reddit' />
-        <Switch>
-          <Route exact path='/' component={Home}></Route>
-          <Route exact path='/about' component={About}></Route>
-          <Route
-            exact
-            path='/search'
-            // component={Search}
-            render={props => (
-              <Fragment>
-                <Alert alert={alert} />
-                <Search showAlert={showAlert} />
-              </Fragment>
-            )}
-          ></Route>
-        </Switch>
-      </Router>
-      <Footer />
+      <RedditState>
+        <Router>
+          <NavBar icon='fab fa-reddit f1a1' title='React Reddit' />
+          <Switch>
+            <Route exact path='/' component={Home}></Route>
+            <Route exact path='/about' component={About}></Route>
+            <Route
+              exact
+              path='/search'
+              // component={Search}
+              render={props => (
+                <Fragment>
+                  <Alert />
+                  <Search />
+                </Fragment>
+              )}
+            ></Route>
+          </Switch>
+        </Router>
+        <Footer />
+      </RedditState>
     </div>
   );
 };

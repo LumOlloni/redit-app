@@ -1,48 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import SearchPost from "./SearchPost";
-import axios from "axios";
+import RedditContext from "../../context/reddit/redditContext";
 
-const Search = ({ showAlert }) => {
+const Search = () => {
+  const redditContext = useContext(RedditContext);
   const [text, setText] = useState("");
   const [radioInput, setRadioInput] = useState("Relevance");
   const [limit, setLimit] = useState("5");
-  const [post, setPost] = useState([]);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const onChange = e => {
     setText(e.target.value);
   };
 
-  const searchPost = async (radioInput, text, limit) => {
-    setLoading(true);
-
-    const res = await axios.get(
-      `http://www.reddit.com/search.json?q=${text}&sort=${radioInput}&limit=${limit}`
-    );
-
-    setPost({ post: res.data });
-    setLoading(false);
-  };
-
   const onSubmit = e => {
     e.preventDefault();
-    setIsSubmitted(true);
+    redditContext.changeValue(true);
     // eslint-disable-next-line
     if (text.length == "") {
-      console.log("Lum Olloni");
-      showAlert("No Result Found", "warning");
-      setIsSubmitted(false);
+      redditContext.changeValue(false);
+      redditContext.showAlert("No Result Found", "warning");
     } else {
-      searchPost(radioInput, text, limit);
+      redditContext.searchPost(radioInput, text, limit);
+      setText("");
     }
-  };
-
-  const clearPost = e => {
-    e.preventDefault();
-    setPost([]);
-    setIsSubmitted(false);
-    setText("");
   };
 
   return (
@@ -106,20 +86,19 @@ const Search = ({ showAlert }) => {
           </button>
         </form>
       </div>
-      {isSubmitted &&
+      {redditContext.setIsubmitFunction() && (
         // eslint-disable-next-line
-        (text.length == "" ? (
-          <div className='alert alert-warning' role='alert'>
-            No result Found
-          </div>
-        ) : (
-          <div>
-            <button onClick={clearPost} className='btn btn-block btn-light'>
-              Clear
-            </button>
-            <SearchPost posts={post} loading={loading} />
-          </div>
-        ))}
+
+        <div>
+          <button
+            onClick={redditContext.clearPost}
+            className='btn btn-block btn-light'
+          >
+            Clear
+          </button>
+          <SearchPost />
+        </div>
+      )}
     </div>
   );
 };

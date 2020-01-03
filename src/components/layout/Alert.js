@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import RedditContext from "../../context/reddit/redditContext";
 
-const Alert = ({ alert }) => {
+const Alert = () => {
+  const alertContext = useContext(RedditContext);
+  const { alert } = alertContext;
+
   return (
     alert !== null && (
       <div className='container'>

@@ -6,6 +6,7 @@ const PostItem = ({ post }) => {
     selftext,
     author_fullname,
     title,
+    url,
     thumbnail,
     total_awards_received,
     score,
@@ -45,6 +46,17 @@ const PostItem = ({ post }) => {
         <p className='badge badge-primary'>Awards:{total_awards_received}</p>
         <p className='badge badge-warning'>Score:{score}</p>
       </div>
+      <div className='col text-center'>
+        <a
+          style={{ color: "white" }}
+          target='_blank'
+          href={url}
+          className='btn  page-footer '
+        >
+          Read More
+        </a>
+      </div>
+      {/*  */}
     </div>
   );
 };
