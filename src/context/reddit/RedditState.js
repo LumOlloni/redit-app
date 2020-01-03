@@ -29,7 +29,7 @@ const RedditState = props => {
     setLoading();
 
     const res = await axios.get(
-      `http://www.reddit.com/search.json?q=${text}&sort=${radioInput}&limit=${limit}`
+      `https://cors-anywhere.herokuapp.com/http://www.reddit.com/search.json?q=${text}&sort=${radioInput}&limit=${limit}`
     );
     dispatch({
       type: SEARCH_POSTS,
